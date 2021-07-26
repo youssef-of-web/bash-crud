@@ -1,8 +1,6 @@
-#/bin/bash
+#!/bin/bash
 
-#init modules
-npm i
-npm i express mongoose --save
+npm install express mongoose --save
 
 case $1 in 
 "make")
@@ -113,7 +111,7 @@ const Schema = mongoose.Schema;
 
 const $2Schema = new Schema({
 
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model('$2', $2Schema)
 "> models/$2.js
