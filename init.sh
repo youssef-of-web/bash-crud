@@ -19,7 +19,7 @@ const Controllers = require('../Controllers/$2');
 Router.post('/$2', Controllers.Add)
 Router.get('/$2', Controllers.GetAll)
 Router.get('/$2/:id', Controllers.GetOne)
-Router.patch('/$2/:id', Controllers.UpdateOne)
+Router.put('/$2/:id', Controllers.UpdateOne)
 Router.delete('/$2/:id', Controllers.DeleteOne)
 
 module.exports = Router;
@@ -56,7 +56,7 @@ const GetAll = async(req,res)=>{
 /* GetOne $2 */
 const GetOne = async(req,res)=>{
  try{
- const data = await  $2.find({_id : req.params.id})
+ const data = await  $2.findOne({_id : req.params.id})
  res.status(201).json(data)
  }catch(error){
    res.status(404).json({error: error.message})
