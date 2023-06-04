@@ -1,20 +1,46 @@
+
+#######################################################
+# Author @mansouri youssef
+# Copyright (c) 2023 Tensorcode
+# All rights reserved.
+#######################################################
+
+
 #!/bin/bash
 
 npm install express mongoose --save
 
 case $1 in 
 "make")
-#create routes folder if not exist
+
+# Create required folder if not exist
+
 mkdir routes
 mkdir controllers
 touch controllers/$2.js
 
+mkdir models
+touch models/$2.js
 
-#echo script
+# models folder
+
+echo "
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const $2Schema = new Schema({
+
+}, { timestamps: true })
+
+module.exports = mongoose.model('$2', $2Schema)
+"> models/$2.js
+
+# controllers folder
+
 echo "
 const express = require('express');
 const Router = express();
-const Controllers = require('../Controllers/$2');
+const Controllers = require('../controllers/$2');
 
 Router.post('/$2', Controllers.Add)
 Router.get('/$2', Controllers.GetAll)
@@ -25,9 +51,8 @@ Router.delete('/$2/:id', Controllers.DeleteOne)
 module.exports = Router;
 "> routes/router$2.js
 
+# models folder
 
-
-#echo script
 echo "
 const $2 = require('../models/$2');
 
@@ -118,4 +143,11 @@ module.exports = mongoose.model('$2', $2Schema)
 ;;
 esac                
 
+
+
+#######################################################
+# Author @mansouri youssef
+# Copyright (c) 2023 Tensorcode
+# All rights reserved.
+#######################################################
 
