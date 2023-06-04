@@ -1,3 +1,9 @@
+#######################################################
+# Author @mansouri youssef
+# Copyright (c) 2023 Tensorcode
+# All rights reserved.
+#######################################################
+
 #!/bin/bash
 
 # Copyright notice
